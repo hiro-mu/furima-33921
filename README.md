@@ -29,7 +29,7 @@
 | shipping_fee_type_id | integer    | null: false                    |
 | prefecture_id        | integer    | null: false                    |
 | days_to_ship_id      | integer    | null: false                    |
-| value                | integer    | null: false                    |
+| price                | integer    | null: false                    |
 | user                 | references | null: false, foreign_key: true |
 
 ### Association
@@ -54,7 +54,7 @@
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| postal_code      | integer    | null: false                    |
+| postal_code      | string     | null: false                    |
 | prefecture_id    | integer    | null: false                    |
 | municipalities   | string     | null: false                    |
 | house_number     | string     | null: false                    |
