@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   with_options presence: true do
+    validates :image
     validates :name
     validates :information
     validates :price
@@ -20,4 +21,7 @@ class Item < ApplicationRecord
     validates :prefecture_id
     validates :shipping_fee_type_id
   end
+
+  validates :price, :numericality => { :greater_than_or_equal_to => 300 }
+  validates :price, :numericality => { :less_than_or_equal_to => 9999999 }
 end
