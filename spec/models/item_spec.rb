@@ -23,69 +23,69 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
       it 'nameがないと保存できない' do
-        @item.name = ""
+        @item.name = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Name can't be blank")
       end
       it 'informationがないと保存できない' do
-        @item.information = ""
+        @item.information = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Information can't be blank")
       end
       it 'category_idの情報がないと保存できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category Select")
+        expect(@item.errors.full_messages).to include('Category Select')
       end
       it 'condition_idについての情報がないと保存できない' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition Select")
+        expect(@item.errors.full_messages).to include('Condition Select')
       end
       it 'shipping_fee_type_idについての情報がないと保存できない' do
         @item.shipping_fee_type_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping fee type Select")
+        expect(@item.errors.full_messages).to include('Shipping fee type Select')
       end
       it 'prefecture_idについての情報がないと保存できない' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture Select")
+        expect(@item.errors.full_messages).to include('Prefecture Select')
       end
       it 'days_to_ship_idについての情報がないと保存できない' do
         @item.days_to_ship_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days to ship Select")
+        expect(@item.errors.full_messages).to include('Days to ship Select')
       end
       it 'priceが¥300以下の場合保存できない' do
         @item.price = 100
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
       it 'priceが¥9999999以上の場合保存できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
       it 'priceが全角数字の場合保存できない' do
-        @item.price = "３００"
+        @item.price = '３００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width number")
+        expect(@item.errors.full_messages).to include('Price Half-width number')
       end
       it 'priceが半角英数混合の場合保存できない' do
-        @item.price = "1a"
+        @item.price = '1a'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width number")
+        expect(@item.errors.full_messages).to include('Price Half-width number')
       end
       it 'priceが半角英字の場合保存できない' do
-        @item.price = "aaa"
+        @item.price = 'aaa'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width number")
+        expect(@item.errors.full_messages).to include('Price Half-width number')
       end
       it 'userが紐づいてないと保存できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
