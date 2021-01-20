@@ -57,13 +57,28 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Days to ship Select")
       end
-      it 'priceが¥300~¥9999999の間でない場合保存できない' do
+      it 'priceが¥300以下の場合保存できない' do
         @item.price = 100
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price Out of setting range")
+      end
+      it 'priceが¥9999999以上の場合保存できない' do
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Out of setting range")
       end
       it 'priceが全角数字の場合保存できない' do
         @item.price = "３００"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price Half-width number")
+      end
+      it 'priceが半角英数混合の場合保存できない' do
+        @item.price = "1a"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price Half-width number")
+      end
+      it 'priceが半角英字の場合保存できない' do
+        @item.price = "aaa"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Half-width number")
       end
