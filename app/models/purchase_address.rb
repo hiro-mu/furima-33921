@@ -8,6 +8,7 @@ class PurchaseAddress
     validates :municipalities
     validates :house_number
     validates :telephone_number, numericality: { less_than_or_equal_to: 11, message: "Input only number" }
+    validates :token
   end
   validates :prefecture_id, numericality: { other_than: 1, message: "Select" }
 
