@@ -7,7 +7,7 @@ class PurchaseAddress
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "Input correctly" }
     validates :municipalities
     validates :house_number
-    validates :telephone_number, numericality: { less_than_or_equal_to: 11, message: "Input only number" }
+    validates :telephone_number, numericality: { message: "Input only number" }, length: { maximum: 11 }
     validates :token
   end
   validates :prefecture_id, numericality: { other_than: 1, message: "Select" }
