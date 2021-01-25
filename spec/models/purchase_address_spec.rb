@@ -17,7 +17,7 @@ RSpec.describe PurchaseAddress, type: :model do
       end
 
       it 'telephone_numberが11桁以下の数字であれば購入できる' do
-        @purchase_address.telephone_number = 11111111111
+        @purchase_address.telephone_number = 11_111_111_111
         expect(@purchase_address).to be_valid
       end
     end
@@ -29,7 +29,7 @@ RSpec.describe PurchaseAddress, type: :model do
         expect(@purchase_address.errors.full_messages).to include("Postal code can't be blank")
       end
       it 'postal_codeにハイフンが含まれていないと購入できない' do
-        @purchase_address.postal_code = 1234567
+        @purchase_address.postal_code = 1_234_567
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Postal code Input correctly')
       end
@@ -64,7 +64,7 @@ RSpec.describe PurchaseAddress, type: :model do
         expect(@purchase_address.errors.full_messages).to include("Telephone number can't be blank")
       end
       it 'telephone_numberが12桁以上である場合購入できない' do
-        @purchase_address.telephone_number = 1234567891011
+        @purchase_address.telephone_number = 1_234_567_891_011
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Telephone number is too long (maximum is 11 characters)')
       end
