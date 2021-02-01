@@ -7,7 +7,8 @@ class PurchaseAddress
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'Input correctly' }
     validates :municipalities
     validates :house_number
-    validates :telephone_number, numericality: { only_integer: true, message: 'Input only Half-width number' }, length: { maximum: 11 }
+    validates :telephone_number, numericality: { only_integer: true, message: 'Input only Half-width number' },
+                                 length: { maximum: 11 }
     validates :token
     validates :user_id
     validates :item_id
